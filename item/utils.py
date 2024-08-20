@@ -20,7 +20,10 @@ def get_db_connection():
         # Insert a default user named admin if the user table is empty
         cursor.execute('''INSERT INTO user (userid, password)
                           SELECT 'admin', '$2b$12$gv0tukvgxt1sNYg5KLQG3O8ofWHY8jUh81oBA.nRwVTRjxEB8eItC'
-                          WHERE NOT EXISTS (SELECT 1 FROM user)''')
+                          WHERE NOT EXISTS (SELECT 1 FROM user where userid='admin')''')
+        cursor.execute('''INSERT INTO user (userid, password)
+                          SELECT 'normal', '$2b$12$gv0tukvgxt1sNYg5KLQG3O8ofWHY8jUh81oBA.nRwVTRjxEB8eItC'
+                          WHERE NOT EXISTS (SELECT 1 FROM user where userid='normal')''')
         conn.commit()
         return conn
     except Exception as err:
