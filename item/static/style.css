@@ -1,0 +1,126 @@
+body {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    height: 100vh;
+    margin: 0;
+}
+
+#price-wrapper {
+    margin-top: 20%;
+    border: 2px solid black;
+    width: 20%;
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#total-price {
+    font-size: 24px;
+}
+
+#back-button {
+    padding: 10px 20px;
+    font-size: 10px;
+    background-color: lightsalmon;
+    cursor: pointer;
+}
+
+#back-button:hover {
+    background-color: darksalmon;
+}
+
+.table-container {
+    position: relative;
+    width: 50%;
+    margin: 20px 0; 
+
+}
+#itemTable {
+    margin: 2px 0;
+}
+
+#showFormButton {
+    position: absolute;
+    bottom: -40px; 
+    left: 0;
+    padding: 8px 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#showFormButton:hover {
+    background-color: darkblue;
+}
+
+#summaryButton {
+    position: absolute;
+    bottom: -40px; 
+    left: 450px; 
+    padding: 8px 16px;
+    background-color: lightsalmon;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px bold;
+}
+
+#summaryButton:hover {
+    background-color: darksalmon;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+    margin: 0 auto;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+form button {
+    width: 100%;
+    padding: 8px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+form button:hover {
+    background-color: darkblue;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto; 
+}
+
+th, td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+th {
+    background-color: #f2f2f2;
+    border: 1px solid black;
+}

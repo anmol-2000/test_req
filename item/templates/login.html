@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <title>APP LOgin</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="login-form">
+        <label for="userid">User ID:</label>
+        <input type="text" id="userid" name="userid" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit", onclick="login()">Login</button>
+    </form>
+    <p id="error-message"></p>
+    <script>
+        async function login(event){
+            event.preventDefault();
+            const userid = document.getElementById('userid').value;
+            const password = document.getElementById('password').value;
+
+            try{
+                const response = await fetch('/item/auth',{
+                    "method": "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userid: userid,
+                        password: password
+                    })
+                });
+
+                const result = await response.json()
+                if (response.ok && result.token){
+                    localStorage.setItem('token', result.token)
+                    window.location.href = '/item-page';
+                } else {
+                    document.getElementById('error-message').innerText = 'User ID or Password is invalid'
+                }
+            } catch(error){
+                document.getElementById('error-message').innerText = 'Error Occured. Please try again'
+            }
+        }
+        document.getElementById('login-form').addEventListener('submit', login)
+    </script>
+</body>
+
+</html>

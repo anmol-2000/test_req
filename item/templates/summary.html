@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <div id="price-wrapper">
+        <div id="total-price">Loading...</div>
+    </div>
+    <button id="back-button">Back</button>
+
+    <script>
+        async function fetchSummary() {
+            try {
+                const token = localStorage.getItem('token')
+                const response = await fetch('/item/summary',{
+                    "method": "GET",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                const data = await response.json();
+                document.getElementById('total-price').innerText = `Total cost:  ${data.item_total}`;
+            } catch (error) {
+                document.getElementById('total-price').innerText = 'Failed to load data';
+            }
+        }
+
+        document.getElementById('back-button').addEventListener('click', () => {
+            window.location.href = '/item-page';
+        });
+        fetchSummary();
+    </script>
+</body>
+</html>
